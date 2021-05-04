@@ -10,7 +10,7 @@
 A simple utility to paginate discord embeds. Built on discord.js@^12.0.0 (master) but should work on older versions. Compatible with MessageEmbeds **AS OBJECTS**,. Pages are embeds.
 
 # Installation
-* `https://github.com/porterporter/discord.js-pagination/`
+* `npm i https://github.com/porterporter/discord.js-pagination/`
 
 # Usage
 __Basic Bot Example__
