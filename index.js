@@ -3,8 +3,9 @@ const paginationEmbed = async (msg, pages, emojiList = ['⏪', '⏩'], timeout =
 	if (!pages) throw new Error('Pages are not given.');
 	if (emojiList.length !== 2) throw new Error('Need two emojis.');
 	let page = 0;
-	const oldFooter = pages[page].footer.text;
-	const curPage = await msg.channel.send(pages[page].setFooter(`${oldFooter} - Page ${page + 1} / ${pages.length}`));
+	const oldFooter = pages[page].embed.footer.text;
+	pages[page].embed.footer.text = (`${oldFooter} - Page ${page + 1} / ${pages.length}`)
+	const curPage = await msg.channel.send({ embed: pages[page].embed });
 	for (const emoji of emojiList) await curPage.react(emoji);
 	const reactionCollector = curPage.createReactionCollector(
 		(reaction, user) => emojiList.includes(reaction.emoji.name) && !user.bot,
@@ -22,7 +23,8 @@ const paginationEmbed = async (msg, pages, emojiList = ['⏪', '⏩'], timeout =
 			default:
 				break;
 		}
-		curPage.edit(pages[page].setFooter(`${oldFooter} - Page ${page + 1} / ${pages.length}`));
+		pages[page].embed.footer.text = `${oldFooter} - Page ${page + 1} / ${pages.length}`;
+		curPage.edit({ embed: pages[page].embed });
 	});
 	reactionCollector.on('end', () => {
 		if (!curPage.deleted) {
