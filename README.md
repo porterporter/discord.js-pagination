@@ -24,10 +24,10 @@ const embed1 = { title: 'hello', description: 'this is an embed description!' };
 
 // Create an array of embeds
 pages = [
-	embed1,
-	embed2,
+	{ embed: embed1 },
+	{ embed: embed2 },
 	//....
-	embedn
+	{ embed: embedn },
 ];
 
 // Call the paginationEmbed method, first two arguments are required
