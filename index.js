@@ -3,7 +3,6 @@ const paginationEmbed = async (msg, pages, emojiList = ['⏪', '⏩'], timeout =
 	if (!pages) throw new Error('Pages are not given.');
 	if (emojiList.length !== 2) throw new Error('Need two emojis.');
 	let page = 0;
-	console.log(pages[page]);
 	const oldFooter = pages[page].footer.text;
 	pages[page].footer.text = (`${oldFooter} - Page ${page + 1} / ${pages.length}`)
 	const curPage = await msg.channel.send({ embeds: [pages[page]] });
@@ -25,7 +24,6 @@ const paginationEmbed = async (msg, pages, emojiList = ['⏪', '⏩'], timeout =
 				break;
 		}
 		pages[page].footer.text = `${oldFooter} - Page ${page + 1} / ${pages.length}`;
-		console.log(pages[page]);
 		curPage.edit({ embeds: [pages[page]] });
 	});
 	reactionCollector.on('end', () => {
