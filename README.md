@@ -23,11 +23,9 @@ const paginationEmbed = require('discord.js-pagination');
 const embed1 = { title: 'hello', description: 'this is an embed description!' };
 
 // Create an array of embeds
-pages = [
-	{ embed: embed1 },
-	{ embed: embed2 },
-	//....
-	{ embed: embedn },
+pages = [ embed1,
+		  embed2,
+   //.... embedn,
 ];
 
 // Call the paginationEmbed method, first two arguments are required
@@ -36,4 +34,3 @@ pages = [
 paginationEmbed(msg, pages, emojiList, timeout);
 // There you go, now you have paged embeds
 ```
-
